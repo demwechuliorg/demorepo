@@ -14,13 +14,6 @@ jobs:
           token: ${{ secrets.PAT }}
           fetch-depth: 0
       - run: |
-           git config --global user.name "wechuli"
-           git config --global user.email "wechuli@email.com"
-           echo ${{ github.run_id }} >> test.txt
-           git add .
-           git commit -m "all"
-           git push
-      - run: |
          curl -L \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.PAT }}" \
@@ -33,5 +26,13 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.PAT }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/demwechuliorg/dune
+      - run: |
+           git config --global user.name "wechuli"
+           git config --global user.email "wechuli@email.com"
+           echo ${{ github.run_id }} >> test.txt
+           git add .
+           git commit -m "all"
+           git push
+
         
 
