@@ -12,4 +12,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT }}
+          fetch-depth: 0
+      - run: |
+           git config --global user.name "wechuli"
+           git config --global user.email "wechuli@email.com"
+           echo ${{ github.run_id }} >> test.txt
+           git add .
+           git commit -m "all"
+           git push
 
